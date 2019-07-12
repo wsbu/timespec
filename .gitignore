@@ -1,0 +1,22 @@
+*.swp
+*.d
+*.o
+*.map
+*.bin
+*.elf
+Debug
+Release
+.metadata/
+.settings/
+RemoteSystemsTempFiles/
+cmake-build-*/
+build*/
+bin*/
+
+# We don't want to track personal IDE settings, but it is important to share
+# run configurations for easy one-click debugging as well as CLion plugin
+# requirements
+.idea/
+
+# OpenOCD configuration file is generated, so be sure to ignore it
+CMakeModules/OpenOCD.cfg

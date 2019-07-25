@@ -326,6 +326,9 @@ int main()
     TEST_NORMALISE(-5,-1000000000, -6,0);
     TEST_NORMALISE(-5,-1500000000, -6,-500000000);
 
+#if (64 <= __WORDSIZE)
+    /* These tests use more than 32-bits for the nanosecond field and are
+       therefore not expected to succeed on 32-bit platforms */
     TEST_NORMALISE(0,2000000000,  2,0);
     TEST_NORMALISE(0,2500000000,  2,500000000);
     TEST_NORMALISE(0,-2000000000, -2,0);
@@ -337,6 +340,7 @@ int main()
 
     TEST_NORMALISE(-1,500000000,  0,-500000000);
     TEST_NORMALISE(-1,499999999,  0,-500000001);
+#endif
 
     if(result > 0)
     {

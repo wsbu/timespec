@@ -28,6 +28,7 @@ class timespec(ConanFile):
         cmake = self.cmake
         cmake.configure()
         cmake.build()
+        cmake.test()
 
     def package(self):
         self.cmake.install()

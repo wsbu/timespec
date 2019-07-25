@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.3)
 
-project(timespecTestConan)
+project(timespecTestConan C)
 
 include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 conan_basic_setup(TARGETS)
@@ -13,7 +13,6 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath-link,${LINK_FLA
 
 find_package(timespec REQUIRED)
 
-set(CMAKE_CXX_STANDARD 11)
 add_executable(${PROJECT_NAME} ${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME} PUBLIC timespec)
 

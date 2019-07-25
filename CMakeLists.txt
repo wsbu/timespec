@@ -14,6 +14,8 @@ if (CONAN AND EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath-link,${LINK_FLAGS}")
 endif ()
 
+enable_testing()
+
 find_package(Doxygen QUIET)
 find_package(WsbuDocGen QUIET)
 
@@ -24,18 +26,11 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
 
 add_subdirectory(src)
+add_subdirectory(test)
 
 install(DIRECTORY "include/" DESTINATION include)
 install(EXPORT ${PROJECT_NAME}Config
     DESTINATION lib/cmake/${PROJECT_NAME}
 )
-
-if (WSBUDOCGEN_FOUND)
-    configure_wsbu_doxygen(
-            MAINPAGE README.md
-            OPTIMIZE_C ON
-            INPUT "src" "include"
-            STRIP_INC_PATH "include")
-endif ()
 
 include(timespecCPack.cmake)
